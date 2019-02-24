@@ -6,5 +6,5 @@ type Account struct{
 	Password string
 	Name string
 	Surname string
-	Email Address
+	Email string
 }

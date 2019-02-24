@@ -1,6 +1,6 @@
 package Models
 
-type Product struct{
+type Item struct{
 	Id int
 	Name string
 	Price float32

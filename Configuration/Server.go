@@ -1,17 +1,17 @@
-package Models
+package Configuration
 
 import (
-	"../Configuration"
 	"net/http"
+	"strconv"
 	"strings"
 )
 
 type Server struct{
-	*Configuration.Configuration
+	*Configuration
 }
 
-func (server *Server) initializeDefaultConfiguration() *Configuration.Configuration{
-	var defaultConfiguration Configuration.Configuration
+func initializeDefaultConfiguration() *Configuration{
+	var defaultConfiguration Configuration
 
 	if defaultConfiguration.Name == "" {
 		defaultConfiguration.Name = "Server"
@@ -29,14 +29,15 @@ func (server *Server) initializeDefaultConfiguration() *Configuration.Configurat
 	return &defaultConfiguration
 }
 
-func (server *Server) StartServer(configuration *Configuration.Configuration) error{
-	address := strings.Join([]string{server.Name, ":", string(server.Port)}, "")
+func (server *Server) StartServer(configuration *Configuration) {
+	server.Configuration = initializeDefaultConfiguration()
+
+	address := strings.Join([]string{server.HostName, ":", strconv.Itoa(server.Port)}, "")
 
 	http.ListenAndServe(address, nil)
-	
-	return nil
 }
 
-func (server *Server) AddPage(pattern string, function func(http.ResponseWriter, *http.Request) )  {
+func (server *Server) AddPage(pattern string, function func(http.ResponseWriter, *http.Request)) {
 	http.HandleFunc(pattern, function)
 }
+

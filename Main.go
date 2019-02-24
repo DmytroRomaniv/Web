@@ -1,14 +1,21 @@
 package main
 
 import (
+	"./Configuration"
+	"./Controls"
 	"fmt"
-	"net/http"
 )
 
 func main() {
+	var server Configuration.Server
+
+	server.AddPage("/", Controls.Authorize)
 
 	fmt.Println("The server has started.")
 
-	http.ListenAndServe("localhost:8080", nil)
+	server.StartServer(nil)
+
+	//http.HandleFunc("/", Controls.CreateAccount)
+	//http.ListenAndServe("localhost:8080", nil)
 
 }
