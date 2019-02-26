@@ -2,13 +2,12 @@ package Controls
 
 import (
 	"../Models"
+	"../Models/Constants"
 	"fmt"
 	"github.com/pkg/errors"
 	"net/http"
 	"regexp"
 )
-
-const emptyValue string = ""
 
 func Authorize (writer http.ResponseWriter, request *http.Request)  {
 	sendGet := func() {
@@ -26,7 +25,7 @@ func Authorize (writer http.ResponseWriter, request *http.Request)  {
 
 		login := request.FormValue("login")
 		password := request.FormValue("password")
-		if login != emptyValue && password != emptyValue {
+		if login != Constants.EmptyValue && password != Constants.EmptyValue {
 			fmt.Fprintf(writer, "Login = %s\n", login)
 			fmt.Fprintf(writer, "Password = %s\n", password)
 		} else {

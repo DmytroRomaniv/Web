@@ -1,6 +1,7 @@
 package Configuration
 
 import (
+	"../Models/Constants"
 	"net/http"
 	"strconv"
 	"strings"
@@ -38,6 +39,15 @@ func (server *Server) StartServer(configuration *Configuration) {
 }
 
 func (server *Server) AddPage(pattern string, function func(http.ResponseWriter, *http.Request)) {
-	http.HandleFunc(pattern, function)
+	if pattern != Constants.EmptyValue {
+		http.HandleFunc(pattern, function)
+	}
+}
+
+func (server *Server) AddLayout(pattern string, root string) {
+	if pattern != Constants.EmptyValue && root != Constants.EmptyValue {
+		fs := http.FileServer(http.Dir(root))
+		http.Handle(pattern, http.StripPrefix(pattern, fs))
+	}
 }
 
