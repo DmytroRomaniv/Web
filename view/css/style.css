@@ -1,0 +1,105 @@
+.body {
+ background-color: #000066;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.item-block {
+	height:1000px;
+	background-color: #e6e6e6;
+	color: #333333;
+}
+
+.prods-list {
+	margin-top:10vh;
+}
+
+.bl-header {
+	width:100%;
+	height:7vh;
+}
+
+.bl {
+width: 40vh;
+height: 40vh;
+position: sticky;
+top: 7vh;
+z-index: 9;
+}
+
+.prods {
+	padding: 0px;
+	margin-top:500px;
+	margin-left:20vh;
+	margin-right:20vh;
+}
+
+.float-left {
+float: left;
+}
+
+.float-right {
+float: right;
+}
+
+.margin-left {
+	margin-left: 40.1vh;
+}
+
+.margin-right {
+	margin-right: 40.1vh;
+}
+
+.header {
+width: 100%;
+height: 7vh;
+position: sticky;
+top:0px;
+background-color:blue;
+z-index:10;
+}
+
+.shadow {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.desc-bl {
+	height: 25vh;
+	padding: 4vh;
+	background-color: #d9d9d9;
+	z-index:8;
+}
+
+.buy-bl {
+	width: 40vh;
+	padding:2vh;
+	background-color: #f2f2f2;
+}
+
+.chrcht-bl {
+	width:40vh;
+	padding: 3vh;
+	background-color: #cccccc;
+	z-index:6;
+}
+
+.cmmnt-bl {
+	width:50vh;
+	padding: 5vh;
+	background-color: #f2f2f2;
+	z-index:7;
+	
+	height:40vh;
+}
+
+.btn-more {
+	border-radius: 50%;
+	width:100%;
+}
+
+.btn-bl {
+	margin: auto;
+  width: 80%;
+}

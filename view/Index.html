@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<header>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/tween.js@16.3.4"></script>
+		<script src="https://cdn.jsdelivr.net/npm/color-js@1.0.3"></script>
+		
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	</header>
+	<body class="body">
+		<div class="header shadow" id="header"
+		v-bind:style= "{ backgroundColor: tweenedCSSColor }">
+		</div>
+		
+		<div id="app" class="prods">
+		<ul>
+			<li 
+			class="prods-list"
+			v-for="(item, index) in items" v-if="index < displayedProds">
+				<div
+				class="bl-header"
+				v-bind:style="item.color">
+				</div>
+				
+				<div id="bl"
+				v-if="index % 2 == 0" 
+				class="bl float-left"
+				v-bind:style="item.color">
+				</div>
+				
+				<div id="bl" 
+				v-else
+				class="bl float-right"
+				v-bind:style="item.color">
+				</div>
+				
+				<div 
+				v-if="index%2 == 0"
+				class="item-block margin-left">
+					
+					<div class="buy-bl float-left shadow">
+						<p class="float-right"> Available: 1 <p>
+						<button type="button" class="btn btn-outline-dark float-left">Buy</button>
+					</div>
+					
+					<div class="desc-bl shadow">
+						<p> {{ item.text }} <p>
+					</div>
+					
+					<div class="cmmnt-bl float-right shadow">
+						
+					</div>
+					
+					<div class="chrcht-bl float-left shadow">
+						<ul>
+							<li>123</li>
+							<li>234</li>
+							<li>345</li>
+						</ul>
+					</div>
+					
+				</div>
+				
+				<div
+				v-else
+				class="item-block margin-right">
+				
+				<div class="buy-bl float-right shadow">
+					<p class="float-left"> Available: 1 <p>
+					<button type="button" class="btn btn-outline-dark float-right">Buy</button>
+				</div>
+				
+				<div class="desc-bl shadow">
+					<p> {{ item.text }} <p>
+				</div>
+					
+					<div class="cmmnt-bl float-right shadow">
+						
+					</div>
+					
+					<div class="chrcht-bl float-left shadow">
+						<ul>
+							<li>123</li>
+							<li>234</li>
+							<li>345</li>
+						</ul>
+					</div>
+				
+				</div>
+			</li>
+		</ul>
+		
+		<div class="btn-bl">
+			<button
+			type="button"
+			class="btn btn-outline-light btn-lg btn-more"
+			v-on:click="updateProds"> More.. </button>
+		</div>
+		</div>
+		
+		<script src="js/custom.js"></script>
+	</body>
+</html>
