@@ -3,13 +3,28 @@ var app = new Vue({
   data: {
 	coords: [],
     message: 'Hello Vue!',
-	displayedProds: 1,
+	displayedProds: 2,
 	items: [
-	{ text: 'Learn JS', 
+	{ text: 'Learn JS',
+	processor: 'Intel Core i5',
+	videocard: 'Nvidia 1010',
+	ssd: '128',
+	ram: 16,
+	price: 276,
 	color: {backgroundColor: '#009900'}},
 	{ text: 'Learn Vue',
+	processor: 'Intel Core i7',
+	videocard: 'Nvidia 1020',
+	ssd: '512',
+	ram: 32,
+	price: 1000,
 	color: {backgroundColor: '#e62e00'}},
 	{ text: 'Learn smt',
+	processor: 'Intel Core i3',
+	videocard: 'Nvidia 1000',
+	ssd: '256',
+	ram: 8,
+	price: 126,
 	color: {backgroundColor: '#ffff00' }}
   ]
   },
@@ -26,7 +41,7 @@ var app = new Vue({
 	  var coordinatesArray = [];
 		var blocks = document.getElementsByClassName('bl')
 		for(var i = 0; i<= blocks.length; i++) {
-			var startCoords = 500 + screen.height * 0.16 +  (i * 1183);
+			var startCoords = 500 + screen.height * 0.22 + (i * ( 1000 + screen.height * 0.25 ) );
 			/*console.log(startCoords)*/
 			coordinatesArray.push(startCoords);
 		}
@@ -89,7 +104,7 @@ function observeHeaders() {
 	var blocks = document.getElementsByClassName('bl')
 	for(var i = 0; i< blocks.length; i++) {
 		/*console.log(i + ' ' + blocks[i].offsetTop);
-		console.log('n' + i + ' ' + app.coords[i]);*/
+		console.log('S' + i + ' ' + app.coords[i]);*/
 		if(blocks[i].offsetTop > app.coords[i] && blocks[i].offsetTop < app.coords[i] + 1000 - screen.height * 0.4) {
 			hd.colorQuery = blocks[i].style.backgroundColor;
 			hd.updateColor();

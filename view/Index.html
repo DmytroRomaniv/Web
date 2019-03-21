@@ -6,97 +6,127 @@
 		<script src="https://cdn.jsdelivr.net/npm/color-js@1.0.3"></script>
 		
 		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
 	</header>
 	<body class="body">
-		<div class="header shadow" id="header"
+	
+		<nav 
+		class="header shadow navbar sticky-top" 
+		id="header"
 		v-bind:style= "{ backgroundColor: tweenedCSSColor }">
-		</div>
+			<p class="navbar-text"><i class="fas fa-atom fa-lg"></i> Shop </p> 
+			<p class="navbar-text float-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+			<p class="navbar-brand"><i class="fas fa-shopping-cart fa-lg"></i>
+		</nav>
 		
-		<div id="app" class="prods">
-		<ul>
-			<li 
-			class="prods-list"
-			v-for="(item, index) in items" v-if="index < displayedProds">
-				<div
-				class="bl-header"
-				v-bind:style="item.color">
-				</div>
-				
-				<div id="bl"
-				v-if="index % 2 == 0" 
-				class="bl float-left"
-				v-bind:style="item.color">
-				</div>
-				
-				<div id="bl" 
-				v-else
-				class="bl float-right"
-				v-bind:style="item.color">
-				</div>
-				
-				<div 
-				v-if="index%2 == 0"
-				class="item-block margin-left">
-					
-					<div class="buy-bl float-left shadow">
-						<p class="float-right"> Available: 1 <p>
-						<button type="button" class="btn btn-outline-dark float-left">Buy</button>
+		<div id="app" class="container prods">
+			<ul class=>
+				<li 
+				class="prods-list"
+				v-for="(item, index) in items" v-if="index < displayedProds">
+					<div
+					class="bl-header jumbotron"
+					v-bind:style="item.color">
 					</div>
-					
-					<div class="desc-bl shadow">
-						<p> {{ item.text }} <p>
+				
+					<div id="bl"
+					v-if="index % 2 == 0" 
+					class="bl float-left"
+					v-bind:style="item.color">
 					</div>
+				
+					<div id="bl" 
+					v-else
+					class="bl float-right"
+					v-bind:style="item.color">
+					</div>
+				
+					<div 
+					v-if="index%2 == 0"
+					class="item-block margin-left nopadding">
 					
-					<div class="cmmnt-bl float-right shadow">
+						<div class="desc-bl shadow col-sm-12 nopadding">
+							<p> {{ item.text }} <p>
+						</div>
+					
+						<div class="chrcht-bl float-left shadow col-sm-4">
+							<ul>
+								<li><h3>Processor</h3> {{ item.processor }}</li>
+								<li><h3>Videocard</h3> {{ item.videocard }}</li>
+								<li><h3>SSD</h3> {{ item.ssd }}</li>
+								<li><h3>RAM</h3> {{ item.ram }}</li>
+							</ul>
+						</div>
+					
+						<div class="float-left col-sm-8" style="padding-left:0;padding-right:0">
 						
-					</div>
+							<div class="buy-bl shadow col-sm-12">
+								<h3 class="float-right"> Available: 1 </h3>
+								<button type="button" class="btn btn-outline-dark float-left margin-1">Buy</button>
+								<h3 class="float-left"> {{ item.price }} $</h3>
+							</div>
 					
-					<div class="chrcht-bl float-left shadow">
-						<ul>
-							<li>123</li>
-							<li>234</li>
-							<li>345</li>
-						</ul>
-					</div>
-					
-				</div>
+							<div class="cmmnt-bl float-left shadow col-sm-12">
+								<div class="chip">
+									<img src="img_avatar.jpg" alt="Person" width="96" height="96">
+									Name Surname
+								</div>
+								
+								<div class="cmmnt-body col-sm-12">
+									text23
+								</div>
+							</div>
+						</div>
 				
-				<div
-				v-else
-				class="item-block margin-right">
-				
-				<div class="buy-bl float-right shadow">
-					<p class="float-left"> Available: 1 <p>
-					<button type="button" class="btn btn-outline-dark float-right">Buy</button>
-				</div>
-				
-				<div class="desc-bl shadow">
-					<p> {{ item.text }} <p>
-				</div>
-					
-					<div class="cmmnt-bl float-right shadow">
-						
-					</div>
-					
-					<div class="chrcht-bl float-left shadow">
-						<ul>
-							<li>123</li>
-							<li>234</li>
-							<li>345</li>
-						</ul>
 					</div>
 				
-				</div>
-			</li>
-		</ul>
+					<div
+					v-else
+					class="item-block margin-right">
+				
+						<div class="desc-bl shadow col-sm-12">
+							<p> {{ item.text }} <p>
+						</div>
+					
+						<div class="chrcht-bl float-right shadow col-sm-4 nopadding">
+							<ul>
+								<li><h3>Processor</h3> {{ item.processor }}</li>
+								<li><h3>Videocard</h3> {{ item.videocard }}</li>
+								<li><h3>SSD</h3> {{ item.ssd }}</li>
+								<li><h3>RAM</h3> {{ item.ram }}</li>
+							</ul>
+						</div>
+					
+						<div class="float-right col-sm-8" style="padding-left:0;padding-right:0">
+							<div class="buy-bl shadow col-sm-12">
+								<h3 class="float-left"> Available: 1 </h3>
+								<button type="button" class="btn btn-outline-dark float-right margin-1">Buy</button>
+								<h3 class="float-right"> {{ item.price }} $</h3>
+							</div>
+				
+							<div class="cmmnt-bl shadow col-sm-12">
+								<div class="chip">
+									<img src="img_avatar.jpg" alt="Person" width="96" height="96">
+									Name Surname
+								</div>
+								
+								<div class="cmmnt-body col-sm-12">
+									text23
+								</div>
+							</div>
+					
+						</div>
+					</div>
+				</li>
+			</ul>
 		
-		<div class="btn-bl">
-			<button
-			type="button"
-			class="btn btn-outline-light btn-lg btn-more"
-			v-on:click="updateProds"> More.. </button>
-		</div>
+			<div class="btn-bl">
+				<button
+				type="button"
+				class="btn btn-outline-light btn-lg btn-more"
+				v-on:click="updateProds"> More.. </button>
+			</div>
 		</div>
 		
 		<script src="js/custom.js"></script>
