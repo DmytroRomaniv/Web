@@ -4,19 +4,21 @@
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/tween.js@16.3.4"></script>
 		<script src="https://cdn.jsdelivr.net/npm/color-js@1.0.3"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Gloria Hallelujah">
 	</header>
 	<body class="body">
 	
 		<nav 
-		class="header shadow navbar sticky-top" 
+		class="navbar header shadow fixed-top" 
 		id="header"
 		v-bind:style= "{ backgroundColor: tweenedCSSColor }">
 			<p class="navbar-text"><i class="fas fa-atom fa-lg"></i> Shop </p> 
-			<p class="navbar-text float-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+			<p class="navbar-text">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
 			<p class="navbar-brand"><i class="fas fa-shopping-cart fa-lg"></i>
 		</nav>
 		
@@ -77,6 +79,24 @@
 									text23
 								</div>
 							</div>
+
+							<button type="button" class="btn btn-outline-light cmmnt-button float-left col-sm-6 text-center">
+								<p><strong>&#8249;</strong></p>
+							</button>	
+							<button type="button" class="btn btn-outline-light cmmnt-button float-left col-sm-6 text-center">
+								<p><strong>&#8250;</strong></p>
+							</button>
+						</div>
+						
+						<button type="button" id="cmmnt-btn" class="btn btn-outline-light cmmnt-button float-right col-sm-8 text-center">
+							<p>Add comment</p>
+						</button>
+						
+						<div class="cmmnt-new form-group col-sm-8 float-right" id="cmmnt-new">
+							<textarea class="form-control" rows="3" id="comment"></textarea>
+							<button type="button" class="cmmnt-button float-left  btn btn-outline-light col-sm-12 text-center">
+								<p>Submit</p>
+							</button>
 						</div>
 				
 					</div>
@@ -99,13 +119,14 @@
 						</div>
 					
 						<div class="float-right col-sm-8" style="padding-left:0;padding-right:0">
+						
 							<div class="buy-bl shadow col-sm-12">
 								<h3 class="float-left"> Available: 1 </h3>
 								<button type="button" class="btn btn-outline-dark float-right margin-1">Buy</button>
 								<h3 class="float-right"> {{ item.price }} $</h3>
 							</div>
 				
-							<div class="cmmnt-bl shadow col-sm-12">
+							<div class="cmmnt-bl float-left shadow col-sm-12">
 								<div class="chip">
 									<img src="img_avatar.jpg" alt="Person" width="96" height="96">
 									Name Surname
@@ -115,7 +136,16 @@
 									text23
 								</div>
 							</div>
-					
+							
+							<button type="button" class="btn btn-outline-light cmmnt-button float-left col-sm-6 text-center">
+								<p><strong>&#8249;</strong></p>
+							</button>	
+							<button type="button" class="btn btn-outline-light cmmnt-button float-left col-sm-6 text-center">
+								<p><strong>&#8250;</strong></p>
+							</button>
+							<button type="button" class="btn btn-outline-light cmmnt-button float-left col-sm-12 text-center">
+									<p>Add comment</p>
+							</button>
 						</div>
 					</div>
 				</li>

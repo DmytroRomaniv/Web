@@ -77,8 +77,8 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 .buy-bl {
 	padding:2vh;
 	background-color: #f2f2f2;
-	height: 8vh;
-	z-index:2;
+	height: 7vh;
+	z-index:7;
 }
 
 .margin-1 {
@@ -98,10 +98,6 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	z-index:6;
 	right:0;
 	height:40vh;
-}
-
-.cmmnt-hdr {
-	background-color: #f2f2f2;
 }
 
 .chip {
@@ -124,6 +120,9 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 .cmmnt-body {
 	background-color: #ffffff;
+	padding: 25px;
+	border-radius: 20px;
+	font-family: 'Gloria Hallelujah';
 }
 
 .btn-more {
@@ -139,4 +138,25 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 .conn-bl {
 	padding-left:0;
 	padding-right:0;
+}
+
+.cmmnt-button {
+	font-size: 2vh !important;
+	border-style: solid;
+	border-radius:0 !important;
+}
+
+.cmmnt-button p {
+	margin-bottom:0px;
+}
+
+.cmmnt-new {
+	color:white;
+	margin-bottom:0 !important;
+	padding: 0 !important;
+	display: none;
+}
+
+.form-control {
+	border-radius:0 !important;
 }
