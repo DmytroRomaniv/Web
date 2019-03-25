@@ -4,8 +4,10 @@ var app = new Vue({
 	coords: [],
     message: 'Hello Vue!',
 	displayedProds: 2,
+	comment: [], 
 	items: [
-	{ text: 'Learn JS',
+	
+	{ text: 'Product 1',
 	processor: 'Intel Core i5',
 	videocard: 'Nvidia 1010',
 	ssd: '128',
@@ -13,7 +15,7 @@ var app = new Vue({
 	price: 276,
 	color: {backgroundColor: '#009900'}},
 	
-	{ text: 'Learn Vue',
+	{ text: 'product 2',
 	processor: 'Intel Core i7',
 	videocard: 'Nvidia 1020',
 	ssd: '512',
@@ -21,21 +23,31 @@ var app = new Vue({
 	price: 1000,
 	color: {backgroundColor: '#e62e00'}},
 	
-	{ text: 'Learn smt',
+	{ text: 'product 3',
 	processor: 'Intel Core i3',
 	videocard: 'Nvidia 1000',
 	ssd: '256',
 	ram: 8,
 	price: 126,
 	color: {backgroundColor: '#ffff00' }}
+	
   ]
   },
   created: function() {
 	  this.getCoords();
   },
   methods: {
+	  openCloseCommentBlock: function(index){
+		  $(".cmmnt-new").each(function(i) {
+			  if(i == index){
+				$(this).animate({
+					height:'toggle',
+				});  
+			  }
+	});
+	  },
 	  updateProds: function() {
-		  this.displayedProds += 1;
+		  this.displayedProds ++;
 		  this.getCoords();
 	  },
 	  
@@ -48,7 +60,14 @@ var app = new Vue({
 			coordinatesArray.push(startCoords);
 		}
 		this.coords =  coordinatesArray;
-  },
+	  },
+	  sendComment: function (index) {
+		  if(this.comment[index] != null &&  this.comment[index] != ''){
+			console.log(index + ' ' + this.comment[index]);
+			document.getElementsByClassName("form-control").value= "";
+		  }
+		  this.openCloseCommentBlock(index);
+	  },
   }
 })
 
@@ -57,6 +76,10 @@ var Color = net.brehaut.Color
 var hd = new Vue({
   el: '#header',
   data: {
+	  user: {
+		  login: '',
+	  },
+	  
     colorQuery: '',
     color: {
       red: 0,
@@ -95,6 +118,22 @@ var hd = new Vue({
     }
   },
   methods: {
+	  scrollToTop: function() {
+		 $("html, body").animate({ scrollTop: 0 }, "slow");
+	  },
+	  
+	  testa: function() {
+		  this.user.login='aaaa';
+	  },
+	  
+	  opemCloseAuthorizationForm: function() {
+		  if(document.getElementById("authorizationForm").style.display == "block"){
+			  document.getElementById("authorizationForm").style.display = "none";
+		  }
+		  else {
+			  document.getElementById("authorizationForm").style.display="block";
+		  }
+	  },
     updateColor: function () {
       this.color = new Color(this.colorQuery).toRGB()
       this.colorQuery = ''
@@ -133,10 +172,4 @@ function Event(e) {
 }
 
 /* jQuery */
-$(document).ready(function() {
-	$("#cmmnt-btn").click(function(){
-		$("#cmmnt-new").animate({
-			height: 'toggle'
-		});
-	});
-});
+

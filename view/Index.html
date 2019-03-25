@@ -17,19 +17,53 @@
 		class="navbar header shadow fixed-top" 
 		id="header"
 		v-bind:style= "{ backgroundColor: tweenedCSSColor }">
-			<p class="navbar-text"><i class="fas fa-atom fa-lg"></i> Shop </p> 
-			<p class="navbar-text">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
-			<p class="navbar-brand"><i class="fas fa-shopping-cart fa-lg"></i>
+			<div class="navbar-text" v-on:click="scrollToTop()"><i class="fas fa-atom fa-lg"></i> Shop </div>
+			<div class="navbar-text">
+				<div v-if="user.login == ''"><a v-on:click="opemCloseAuthorizationForm"> Login </a></div>
+				<div v-else>Signed in as <a v-on:click="testa">{{ user.login }}</a></div>
+			</div>
+			<div class="navbar-brand"><i class="fas fa-shopping-cart fa-lg"></i></div>
 		</nav>
 		
+		<div class="auth-con container" id= "authorizationForm">
+			<form>
+				<div class="row">
+
+					<div class="col-sm-6 auth-rows">
+						<a href="#" class="fb btn-auth">
+							<i class="fab fa-facebook fa-fw"></i> Login with Facebook
+						</a>
+						<a href="#" class="twitter btn-auth">
+							<i class="fab fa-twitter fa-fw"></i> Login with Twitter
+						</a>
+						<a href="#" class="google btn-auth">
+							<i class="fab fa-google fa-fw"></i> Login with Google+
+						</a>
+					</div>
+
+					<div class="col-sm-6 auth-rows">
+						<input class="btn-auth" type="text" name="username" placeholder="Username" required>
+						<input class="btn-auth" type="password" name="password" placeholder="Password" required>
+						<button class="btn-auth sign in" type="button">
+							<p><strong> Login </strong></p>
+						</button>
+						<button class="btn-auth sign up" type="button">
+							<p><strong> Register </strong></p>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		
 		<div id="app" class="container prods">
-			<ul class=>
+			<ul>
 				<li 
-				class="prods-list"
+				class="prods-list nopadding"
 				v-for="(item, index) in items" v-if="index < displayedProds">
 					<div
 					class="bl-header jumbotron"
 					v-bind:style="item.color">
+						<p>Name</p>
 					</div>
 				
 					<div id="bl"
@@ -43,12 +77,13 @@
 					class="bl float-right"
 					v-bind:style="item.color">
 					</div>
-				
+					
+					<!-- Right block -->
 					<div 
 					v-if="index%2 == 0"
 					class="item-block margin-left nopadding">
 					
-						<div class="desc-bl shadow col-sm-12 nopadding">
+						<div class="desc-bl shadow col-sm-12">
 							<p> {{ item.text }} <p>
 						</div>
 					
@@ -61,7 +96,7 @@
 							</ul>
 						</div>
 					
-						<div class="float-left col-sm-8" style="padding-left:0;padding-right:0">
+						<div class="float-left col-sm-8 nopadding">
 						
 							<div class="buy-bl shadow col-sm-12">
 								<h3 class="float-right"> Available: 1 </h3>
@@ -88,19 +123,21 @@
 							</button>
 						</div>
 						
-						<button type="button" id="cmmnt-btn" class="btn btn-outline-light cmmnt-button float-right col-sm-8 text-center">
+						<button type="button" v-on:click="openCloseCommentBlock(index)" class="btn btn-outline-light cmmnt-button float-right col-sm-8 text-center">
 							<p>Add comment</p>
 						</button>
 						
-						<div class="cmmnt-new form-group col-sm-8 float-right" id="cmmnt-new">
-							<textarea class="form-control" rows="3" id="comment"></textarea>
-							<button type="button" class="cmmnt-button float-left  btn btn-outline-light col-sm-12 text-center">
+						<div class="cmmnt-new form-group col-sm-8 float-right">
+							<textarea v-model="comment[index]" class="form-control" rows="3"></textarea>
+							<button v-on:click="sendComment(index)" type="button" class="cmmnt-button float-left  btn btn-outline-light col-sm-12 text-center">
 								<p>Submit</p>
 							</button>
 						</div>
 				
 					</div>
-				
+					<!-- End of right block -->
+					
+					<!-- Left block -->
 					<div
 					v-else
 					class="item-block margin-right">
@@ -118,7 +155,7 @@
 							</ul>
 						</div>
 					
-						<div class="float-right col-sm-8" style="padding-left:0;padding-right:0">
+						<div class="float-right col-sm-8 nopadding">
 						
 							<div class="buy-bl shadow col-sm-12">
 								<h3 class="float-left"> Available: 1 </h3>
@@ -143,11 +180,20 @@
 							<button type="button" class="btn btn-outline-light cmmnt-button float-left col-sm-6 text-center">
 								<p><strong>&#8250;</strong></p>
 							</button>
-							<button type="button" class="btn btn-outline-light cmmnt-button float-left col-sm-12 text-center">
-									<p>Add comment</p>
+						</div>
+						
+						<button type="button" v-on:click="openCloseCommentBlock(index)" class="btn btn-outline-light cmmnt-button float-left col-sm-8 text-center">
+							<p>Add comment</p>
+						</button>
+						
+						<div class="cmmnt-new form-group col-sm-8 float-left">
+							<textarea v-model="comment[index]" class="form-control" rows="3"></textarea>
+							<button v-on:click="sendComment(index)" type="button" class="cmmnt-button float-left  btn btn-outline-light col-sm-12 text-center">
+								<p>Submit</p>
 							</button>
 						</div>
 					</div>
+					<!-- End of left block -->
 				</li>
 			</ul>
 		
@@ -158,6 +204,13 @@
 				v-on:click="updateProds"> More.. </button>
 			</div>
 		</div>
+		
+		<div class="sidenav">
+			<a href="#" class="new-item">Add</a>
+			<a href="#" class="email">Email</a>
+			<a href="#" class="sale">Sale</a>
+		</div>
+		
 		
 		<script src="js/custom.js"></script>
 	</body>
