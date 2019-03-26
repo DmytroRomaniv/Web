@@ -55,7 +55,7 @@ var app = new Vue({
 	  var coordinatesArray = [];
 		var blocks = document.getElementsByClassName('bl')
 		for(var i = 0; i<= blocks.length; i++) {
-			var startCoords = 500 + screen.height * 0.17 + (i * ( 1000 + screen.height * 0.25 ) );
+			var startCoords = 500 + screen.height * 0.27 + (i * ( 1000 + screen.height * 0.25 ) );
 			/*console.log(startCoords)*/
 			coordinatesArray.push(startCoords);
 		}
@@ -64,7 +64,8 @@ var app = new Vue({
 	  sendComment: function (index) {
 		  if(this.comment[index] != null &&  this.comment[index] != ''){
 			console.log(index + ' ' + this.comment[index]);
-			document.getElementsByClassName("form-control").value= "";
+			this.comment[index] = '';
+			document.getElementsByClassName("form-control").value= '';
 		  }
 		  this.openCloseCommentBlock(index);
 	  },
@@ -124,6 +125,7 @@ var hd = new Vue({
 	  
 	  testa: function() {
 		  this.user.login='aaaa';
+		  console.log(app.items[0]);
 	  },
 	  
 	  opemCloseAuthorizationForm: function() {
@@ -139,6 +141,16 @@ var hd = new Vue({
       this.colorQuery = ''
     }
   }
+})
+
+var af = new Vue({
+	el: '#authorizationForm',
+	methods:{
+		openRegistrationForm: function(){
+			document.getElementById("registrationForm").style.display = "block";
+			document.getElementById("authorizationForm").style.display = "none";
+	  },
+	},
 })
 
 function observeHeaders() {
@@ -168,6 +180,14 @@ function Event(e) {
     });
 
     ticking = true;
+  }
+}
+
+var regModal = document.getElementById('registrationForm');
+
+window.onclick = function(event) {
+  if (event.target == regModal) {
+    regModal.style.display = "none";
   }
 }
 

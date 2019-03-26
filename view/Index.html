@@ -22,9 +22,10 @@
 				<div v-if="user.login == ''"><a v-on:click="opemCloseAuthorizationForm"> Login </a></div>
 				<div v-else>Signed in as <a v-on:click="testa">{{ user.login }}</a></div>
 			</div>
-			<div class="navbar-brand"><i class="fas fa-shopping-cart fa-lg"></i></div>
+			<div class="navbar-brand"><a v-on:click="testa"><i class="fas fa-shopping-cart fa-lg"></i></a></div>
 		</nav>
 		
+		<!-- Authorization form -->
 		<div class="auth-con container" id= "authorizationForm">
 			<form>
 				<div class="row">
@@ -42,18 +43,49 @@
 					</div>
 
 					<div class="col-sm-6 auth-rows">
-						<input class="btn-auth" type="text" name="username" placeholder="Username" required>
-						<input class="btn-auth" type="password" name="password" placeholder="Password" required>
+						<input class="inp" type="text" name="username" placeholder="Username" required>
+						<input class="inp" type="password" name="password" placeholder="Password" required>
 						<button class="btn-auth sign in" type="button">
 							<p><strong> Login </strong></p>
 						</button>
-						<button class="btn-auth sign up" type="button">
+						<button v-on:click="openRegistrationForm" class="btn-auth sign up" type="button">
 							<p><strong> Register </strong></p>
 						</button>
 					</div>
 				</div>
 			</form>
 		</div>
+		
+		<!-- Registration form -->
+		<div id="registrationForm" class="modal col-sm-8">
+		<span onclick="document.getElementById('registrationForm').style.display='none'" class="close" title="Close Modal">&times;</span>
+			<form class="modal-content" action="/action_page.php">
+				<div class="container">
+					<h1>Sign Up</h1>
+					<label for="email"><b>Email</b></label>
+					<input class="inp" type="text" placeholder="Email" name="email" required>
+
+					<label class="col-sm-6 float-left" for="name"><b>Name</b></label>
+					<label class="col-sm-6 float-left" for="surname"><b>Surname</b></label>
+					
+					<input class="col-sm-6 float-left inp" type="text" placeholder="Name" name="name" required>
+					<input class="col-sm-6 float-left inp" type="text" placeholder="Surname" name="email" required>
+					
+					<label for="psw"><b>Password</b></label>
+					<input class="inp" type="password" placeholder="Password" name="psw" required>
+
+					<label for="psw-repeat"><b>Repeat Password</b></label>
+					<input class="inp" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+					
+					
+					
+					<div class="clearfix col-sm-12">
+						<button type="submit" class="signupbtn button-register col-sm-12">Sign Up</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		
 		
 		<div id="app" class="container prods">
 			<ul>
