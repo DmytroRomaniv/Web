@@ -43,8 +43,8 @@
 					</div>
 
 					<div class="col-sm-6 auth-rows">
-						<input class="inp" type="text" name="username" placeholder="Username" required>
-						<input class="inp" type="password" name="password" placeholder="Password" required>
+						<input class="inp inp-padding" type="email" name="email" placeholder="Email" required>
+						<input class="inp inp-padding" type="password" name="password" placeholder="Password" required>
 						<button class="btn-auth sign in" type="button">
 							<p><strong> Login </strong></p>
 						</button>
@@ -57,25 +57,25 @@
 		</div>
 		
 		<!-- Registration form -->
-		<div id="registrationForm" class="modal col-sm-8">
+		<div id="registrationForm" class="modal hidden-form col-sm-8">
 		<span onclick="document.getElementById('registrationForm').style.display='none'" class="close" title="Close Modal">&times;</span>
 			<form class="modal-content" action="/action_page.php">
 				<div class="container">
 					<h1>Sign Up</h1>
 					<label for="email"><b>Email</b></label>
-					<input class="inp" type="text" placeholder="Email" name="email" required>
+					<input class="inp inp-padding" type="text" placeholder="Email" name="email" required>
 
 					<label class="col-sm-6 float-left" for="name"><b>Name</b></label>
 					<label class="col-sm-6 float-left" for="surname"><b>Surname</b></label>
 					
-					<input class="col-sm-6 float-left inp" type="text" placeholder="Name" name="name" required>
-					<input class="col-sm-6 float-left inp" type="text" placeholder="Surname" name="email" required>
+					<input class="col-sm-6 float-left inp inp-padding" type="text" placeholder="Name" name="name" required>
+					<input class="col-sm-6 float-left inp inp-padding" type="text" placeholder="Surname" name="email" required>
 					
 					<label for="psw"><b>Password</b></label>
-					<input class="inp" type="password" placeholder="Password" name="psw" required>
+					<input class="inp inp-padding" type="password" placeholder="Password" name="psw" required>
 
 					<label for="psw-repeat"><b>Repeat Password</b></label>
-					<input class="inp" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+					<input class="inp inp-padding" type="password" placeholder="Repeat Password" name="psw-repeat" required>
 					
 					
 					
@@ -86,7 +86,7 @@
 			</form>
 		</div>
 		
-		
+		<!-- Products -->
 		<div id="app" class="container prods">
 			<ul>
 				<li 
@@ -237,13 +237,78 @@
 			</div>
 		</div>
 		
+		<div id="adminSide">
+		
 		<div class="sidenav">
-			<a href="#" class="new-item">Add</a>
+			<a v-on:click="openAddForm" class="new-item">Add</a>
 			<a href="#" class="email">Email</a>
 			<a href="#" class="sale">Sale</a>
 		</div>
 		
+		<!-- Add Form -->
+		<div id="addForm" class="modal hidden-form col-sm-8">
+		<span onclick="document.getElementById('addForm').style.display='none'" class="close" title="Close Modal">&times;</span>
+			<form class="modal-content row prods-list" action="/action_page.php">
+				<div
+					class="bl-header jumbotron"
+					v-bind:style="{ backgroundColor: color }">
+						<p>Name</p>
+						<input v-model="color" type="color" class="float-right" id="prod-color" name="product-color">
+					</div>
+					
+				<div class="row">	
+				<div
+					class="col-sm-4"
+					v-bind:style="{ backgroundColor: color }">
+					</div>
+					
+					<div 
+					class="col-sm-8 nopadding-left">
+					
+						<div class="desc-bl shadow col-sm-12">
+							<p> item.text <p>
+						</div>
+					
+						<div class="chrcht-bl float-left shadow col-sm-4">
+							<ul>
+								<li>
+									<h3>Processor</h3>
+									<input class="inp" type="text" name="processor">
+								</li>
+								<li>
+									<h3>Videocard</h3>
+									<input class="inp" type="text" name="videocard">
+								</li>
+								<li>
+									<h3>SSD</h3>
+									<input class="inp" type="number" name="ssd">
+								</li>
+								<li>
+									<h3>RAM</h3>
+									<input class="inp" type="text" name="ram">
+								</li>
+							</ul>
+						</div>
+					
+						<div class="float-left col-sm-8 nopadding">
+						
+							<div class="buy-bl shadow col-sm-12">
+								<h3 class="float-right"> Available: 1 </h3>
+								<button type="button" class="btn btn-outline-dark float-left margin-1">Buy</button>
+								<h3 class="float-left">  item.price  $</h3>
+							</div>
+							
+							<div class="col-sm-4" style="padding:5px">
+							<button type="submit" class="btn btn-outline-dark margin-1 col-sm-12">Submit</button>
+							</div>
+						</div>
+						
+					</div>
+					</div>
+			</form>
+		</div>
 		
+		</div>
 		<script src="js/custom.js"></script>
 	</body>
 </html>

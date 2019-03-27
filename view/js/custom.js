@@ -153,6 +153,18 @@ var af = new Vue({
 	},
 })
 
+var adm = new Vue({
+	el: '#adminSide',
+	data:{
+		color: '#0066ff',
+	},
+	methods:{
+		openAddForm: function() {
+			document.getElementById("addForm").style.display = "block";
+		},
+	},
+})
+
 function observeHeaders() {
 	var blocks = document.getElementsByClassName('bl')
 	for(var i = 0; i< blocks.length; i++) {
@@ -180,14 +192,6 @@ function Event(e) {
     });
 
     ticking = true;
-  }
-}
-
-var regModal = document.getElementById('registrationForm');
-
-window.onclick = function(event) {
-  if (event.target == regModal) {
-    regModal.style.display = "none";
   }
 }
 

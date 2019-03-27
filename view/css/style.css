@@ -33,7 +33,6 @@ nav div:hover {
 
 .prods-list {
 	margin-top:10vh;
-	margin-left:0 !important;
 }
 
 .bl-header {
@@ -300,11 +299,14 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 .inp {
   width: 100%;
-  padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
   background: #f1f1f1;
+}
+
+.inp-padding {
+	 padding: 15px;
 }
 
 /* Add a background color when the inputs get focus */
@@ -334,8 +336,8 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 /* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
+.hidden-form {
+	display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -345,7 +347,10 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  padding-top: 50px;
+}
+
+.modal {
+  padding-top: 7vh;
   color: black;
 }
 
@@ -375,4 +380,14 @@ hr {
   content: "";
   clear: both;
   display: table;
+}
+
+/* Add form */
+.bl-add {
+	width:100%;
+	height:30%;
+}
+
+.nopadding-left{
+	padding-left:0px !important;
 }
